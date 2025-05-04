@@ -1,16 +1,16 @@
 package homework0;
-
+import java.util.ArrayList;
 /**
  * A container that can be used to store Books. A given Book may only
  * appear in a Bookshelf once.
  */
 public class Bookshelf {
-
+    private ArrayList<homework0.Book> mShelfContains;
     /**
      * @effects Creates a new empty Bookshelf.
      */
     public Bookshelf() {
-        // TODO: Add your code here
+        this.mShelfContains = new ArrayList<homework0.Book>();
     }
 
     /**
@@ -19,8 +19,14 @@ public class Bookshelf {
      * @return true if the book was successfully added,
      *         i.e. the book was not already in the Bookshelf; false otherwise.
      */
-    public boolean addBook(Book book) {
-        // TODO: Add your code here
+    public boolean addBook(homework0.Book book) {
+        boolean result = !this.mShelfContains.contains(book);
+
+        if (result) {
+            this.mShelfContains.add(book);
+        }
+
+        return result;
     }
 
     /**
@@ -29,22 +35,34 @@ public class Bookshelf {
      * @return true if the book was successfully removed,
      *         i.e. the book was in the Bookshelf; false otherwise.
      */
-    public boolean removeBook(Book book) {
-        // TODO: Add your code here
+    public boolean removeBook(homework0.Book book) {
+        boolean result = this.mShelfContains.contains(book);
+
+        if (result) {
+            this.mShelfContains.remove(book);
+        }
+
+        return result;
     }
 
     /**
      * @return the total number of pages in all the books in the Bookshelf.
      */
     public int getTotalPages() {
-        // TODO: Add your code here
+        int result = 0;
+
+        for (homework0.Book book : this.mShelfContains) {
+            result += book.getPages();
+        }
+
+        return result;
     }
 
     /**
      * @return the number of books in the Bookshelf.
      */
     public int size() {
-        // TODO: Add your code here
+        return this.mShelfContains.size();
     }
 
     /**
@@ -52,13 +70,13 @@ public class Bookshelf {
      * @effects Empties the Bookshelf, i.e., removes all books.
      */
     public void clear() {
-        // TODO: Add your code here
+        mShelfContains.clear();
     }
 
     /**
      * @return true if this Bookshelf contains the book; false otherwise.
      */
-    public boolean contains(Book book) {
-        // TODO: Add your code here
+    public boolean contains(homework0.Book book) {
+        return mShelfContains.contains(book);
     }
 }

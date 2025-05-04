@@ -6,13 +6,16 @@ package homework0;
  * Once a Library is full, we cannot add more books to it.
  */
 public class Library {
+    private int mMaxPages;
+    homework0.Bookshelf mBooks;
 
     /**
      * @param maxPages - Total number of pages that this Library can contain.
      * @effects Creates a new Library.
      */
     public Library(int maxPages) {
-        // TODO: Add your code here
+        mMaxPages = maxPages;
+        mBooks = new homework0.Bookshelf();
     }
 
     /**
@@ -23,8 +26,12 @@ public class Library {
      *         the Library has enough capacity;
      *         false otherwise.
      */
-    public boolean addBook(Book book) {
-        // TODO: Add your code here
+    public boolean addBook(homework0.Book book) {
+        if(book.getPages() + mBooks.getTotalPages() <= mMaxPages) {
+            return mBooks.addBook(book);
+        }
+
+        return false;
     }
 
     /**
@@ -33,22 +40,22 @@ public class Library {
      * @return true if the book was successfully removed from the Library,
      *         i.e. the book was in the Library; false otherwise.
      */
-    public boolean removeBook(Book book) {
-        // TODO: Add your code here
+    public boolean removeBook(homework0.Book book) {
+        return mBooks.removeBook(book);
     }
 
     /**
      * @return the total number of pages in all the books in the Library.
      */
     public int getTotalPages() {
-        // TODO: Add your code here
+        return mBooks.getTotalPages();
     }
 
     /**
      * @return the number of books in the Library.
      */
     public int size() {
-        // TODO: Add your code here
+        return mBooks.size();
     }
 
     /**
@@ -56,13 +63,13 @@ public class Library {
      * @effects Empties the Library.
      */
     public void clear() {
-        // TODO: Add your code here
+        mBooks.clear();
     }
 
     /**
      * @return true if this Library contains the book; false otherwise.
      */
-    public boolean contains(Book book) {
-        // TODO: Add your code here
+    public boolean contains(homework0.Book book) {
+        return mBooks.contains(book);
     }
 }
