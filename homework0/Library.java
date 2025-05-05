@@ -7,7 +7,7 @@ package homework0;
  */
 public class Library {
     private int mMaxPages;
-    homework0.Bookshelf mBooks;
+    Bookshelf mBooks;
 
     /**
      * @param maxPages - Total number of pages that this Library can contain.
@@ -15,7 +15,7 @@ public class Library {
      */
     public Library(int maxPages) {
         mMaxPages = maxPages;
-        mBooks = new homework0.Bookshelf();
+        mBooks = new Bookshelf();
     }
 
     /**
@@ -26,7 +26,7 @@ public class Library {
      *         the Library has enough capacity;
      *         false otherwise.
      */
-    public boolean addBook(homework0.Book book) {
+    public boolean addBook(Book book) {
         if(book.getPages() + mBooks.getTotalPages() <= mMaxPages) {
             return mBooks.addBook(book);
         }
@@ -40,7 +40,7 @@ public class Library {
      * @return true if the book was successfully removed from the Library,
      *         i.e. the book was in the Library; false otherwise.
      */
-    public boolean removeBook(homework0.Book book) {
+    public boolean removeBook(Book book) {
         return mBooks.removeBook(book);
     }
 
@@ -69,7 +69,7 @@ public class Library {
     /**
      * @return true if this Library contains the book; false otherwise.
      */
-    public boolean contains(homework0.Book book) {
+    public boolean contains(Book book) {
         return mBooks.contains(book);
     }
 }

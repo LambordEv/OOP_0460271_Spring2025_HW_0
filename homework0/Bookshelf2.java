@@ -5,13 +5,13 @@ import java.util.ArrayList;
  * appear in a Bookshelf once.
  */
 public class Bookshelf2 {
-    private ArrayList<homework0.Book> mShelfContains;
+    private ArrayList<Book> mShelfContains;
     private int mTotalPagesAmount;
     /**
      * @effects Creates a new empty Bookshelf.
      */
     public Bookshelf2() {
-        this.mShelfContains = new ArrayList<homework0.Book>();
+        this.mShelfContains = new ArrayList<Book>();
     }
 
     /**
@@ -20,7 +20,7 @@ public class Bookshelf2 {
      * @return true if the book was successfully added,
      *         i.e. the book was not already in the Bookshelf; false otherwise.
      */
-    public boolean addBook(homework0.Book book) {
+    public boolean addBook(Book book) {
         boolean result = !this.mShelfContains.contains(book);
 
         if (result) {
@@ -37,7 +37,7 @@ public class Bookshelf2 {
      * @return true if the book was successfully removed,
      *         i.e. the book was in the Bookshelf; false otherwise.
      */
-    public boolean removeBook(homework0.Book book) {
+    public boolean removeBook(Book book) {
         boolean result = this.mShelfContains.contains(book);
 
         if (result) {
@@ -73,7 +73,7 @@ public class Bookshelf2 {
     /**
      * @return true if this Bookshelf contains the book; false otherwise.
      */
-    public boolean contains(homework0.Book book) {
+    public boolean contains(Book book) {
         return mShelfContains.contains(book);
     }
 }
