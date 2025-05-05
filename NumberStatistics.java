@@ -10,6 +10,9 @@ public class NumberStatistics {
     private int mPositiveAmount;
     private int mNegativeAmount;
 
+    /**
+     * @effects Initialize the NumberStatistics class
+     */
     NumberStatistics(){
         mTotalRegisteredNumbers = 0;
         mLinesAverage = new ArrayList<>();
@@ -17,6 +20,11 @@ public class NumberStatistics {
         mNegativeAmount = 0;
     }
 
+    /**
+     * @effects parses the received line string by the defined rules
+     * @modifies this - the statistics variables
+     * @param line - a string that holds a single line from the original file
+     */
     public void parseLine(String line) {
         double totalNumbersInLine = 0.0;
         double lineNumbersSum = 0.0;
@@ -44,15 +52,17 @@ public class NumberStatistics {
                 } else if (actualNumber < 0) {
                     mNegativeAmount++;
                 }
-//                System.out.print(actualNumber + " - ");
             }
         }
-//        System.out.println("");
 
         mLinesAverage.add(lineNumbersSum / totalNumbersInLine);
         mTotalRegisteredNumbers += (int)totalNumbersInLine;
     }
 
+    /**
+     * @effect constructs the Statistics result string
+     * @return the reade string
+     */
     public String toString() {
         StringBuilder result = new StringBuilder();
         double positiveNumPercentage = 100 * (mPositiveAmount / (double)mTotalRegisteredNumbers);
@@ -71,6 +81,10 @@ public class NumberStatistics {
         return result.toString();
     }
 
+    /**
+     * @effects parses the given file line by line and saves the statics, in the end prints them all
+     * @param args - holds the filename path
+     */
     public static void main(String[] args) {
         if(args.length != 1) {
             System.out.println("Usage: java NumberStatistics <file_path>");
@@ -84,7 +98,6 @@ public class NumberStatistics {
             String currentLine;
             while ((currentLine = in.readLine()) != null) {
                 statistics.parseLine(currentLine);
-//                break;
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + filename);
